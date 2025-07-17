@@ -12,7 +12,7 @@ function showScreen(id) {
 }
 
 function formatoCOP(num) {
-  return '$' + num.toLocaleString('es-CO') + ' COP';
+  return '$' + num.toLocaleString('es-CO');
 }
 
 // --- Carrusel landing ---
@@ -51,9 +51,9 @@ function formatoCOP(num) {
 
 // --- Configuración de productos --- 
 const tamanos = {
-  "Chico": { precio: 9000, img: "img/peque.jpg" },
-  "Mediano": { precio: 12000, img: "img/media.jpg" },
-  "Grande": { precio: 16000, img: "img/gran.jpeg" }
+  "Chico": { precio: 9000, img: "img/vaso-9oz.jpg" },
+  "Mediano": { precio: 12000, img: "img/vaso-12oz.jpg" },
+  "Grande": { precio: 16000, img: "img/vaso-16oz.jpg" }
 };
 const toppings = [
   { nombre: "Chocolatina", precio: 1000 },
@@ -66,7 +66,7 @@ const toppings = [
   { nombre: "Chocomasmelos", precio: 1000 },
   { nombre: "Barquillos", precio: 1000 },
   { nombre: "Duraznos", precio: 1000 },
-  { nombre: "Chips Chocolate", precio: 1000 },
+  { nombre: "Chips de Chocolate", precio: 1000 },
   { nombre: "Chocodisk", precio: 1000 },
   { nombre: "Brownie", precio: 1000 },
   { nombre: "Gol", precio: 1000 },
@@ -85,19 +85,64 @@ let carrito = [];
 // --- Catálogo de productos prediseñados ---
 const catalogo = [
   {
-    nombre: "Fresas Opitas",
-    descripcion: "Fresas con crema, queso rallado y leche condensada.",
-    img: "img/vaso3.jpg"
+    nombre: "Vaso Encantado",
+    descripcion: "Fresas con crema, oreo, chocomasmelos, brownie, quipito y salsas al gusto",
+    img: "img/vaso-encantado.jpg",
+    precios: {
+      "Chico": 12000,   
+      "Mediano": 15000,
+      "Grande": 19000
+    }
   },
   {
-    nombre: "Fresas Nevadas",
-    descripcion: "Fresas con crema y quipito.",
-    img: "img/vaso1.jpg"
+    nombre: "Vaso Chocosabor",
+    descripcion: "Fresas con crema, chocolatina, chocorramo, trocitos de gol, chips de chocolate y nutella.",
+    img: "img/vaso-chocosabor.jpg",
+    precios: {
+      "Chico": 12000,   
+      "Mediano": 15000,
+      "Grande": 19000
+    }
   },
   {
-    nombre: "Fresas Clásicas",
-    descripcion: "Fresas con crema y chocolatina.",
-    img: "img/vaso2.jpg"
+    nombre: "Vaso Enfrutado",
+    descripcion: "Fresas con crema, duraznos, manzana, kiwi, queso, y cereza.",
+    img: "img/vaso-enfrutado.jpg",
+    precios: {
+      "Chico": 12000,   
+      "Mediano": 15000,
+      "Grande": 19000
+    }
+  },
+  {
+    nombre: "Vaso Trululu",
+    descripcion: "Fresas con crema, variedad de gomitas, chocolores y masmelos.",
+    img: "img/vaso-trululu.jpg",
+    precios: {
+      "Chico": 12000,   
+      "Mediano": 15000,
+      "Grande": 19000
+    }
+  },
+  {
+    nombre: "Vaso Opita",
+    descripcion: "Fresas con crema, trocitos de bocadillo, achiras, queso y arequipe.",
+    img: "img/vaso-opita.jpg",
+    precios: {
+      "Chico": 12000,   
+      "Mediano": 15000,
+      "Grande": 19000
+    }
+  },
+  {
+    nombre: "Vaso Nevado",
+    descripcion: "Fresas con crema, quipitos, merengue, masmelos y chips de chocolate.",
+    img: "img/vaso-nevado.jpg",
+    precios: {
+      "Chico": 12000,   
+      "Mediano": 15000,
+      "Grande": 19000
+    }
   }
 ];
 
@@ -114,9 +159,9 @@ function renderCatalogo() {
       <h3>${producto.nombre}</h3>
       <p>${producto.descripcion}</p>
       <div class="tamano-catalogo-btns">
-        <button onclick="agregarCatalogoAlCarrito(${prodIdx}, 'Chico')">Chico<br><span>${formatoCOP(tamanos['Chico'].precio)}</span></button>
-        <button onclick="agregarCatalogoAlCarrito(${prodIdx}, 'Mediano')">Mediano<br><span>${formatoCOP(tamanos['Mediano'].precio)}</span></button>
-        <button onclick="agregarCatalogoAlCarrito(${prodIdx}, 'Grande')">Grande<br><span>${formatoCOP(tamanos['Grande'].precio)}</span></button>
+        <button onclick="agregarCatalogoAlCarrito(${prodIdx}, 'Chico')">9 oz<br><span>${formatoCOP(producto.precios['Chico'])}</span></button>
+        <button onclick="agregarCatalogoAlCarrito(${prodIdx}, 'Mediano')">12 oz<br><span>${formatoCOP(producto.precios['Mediano'])}</span></button>
+        <button onclick="agregarCatalogoAlCarrito(${prodIdx}, 'Grande')">16 oz<br><span>${formatoCOP(producto.precios['Grande'])}</span></button>
       </div>
     `;
     lista.appendChild(div);
@@ -126,7 +171,7 @@ function renderCatalogo() {
 // --- Agregar producto del catálogo al carrito ---
 function agregarCatalogoAlCarrito(prodIdx, tamano) {
   const producto = catalogo[prodIdx];
-  const precioU = tamanos[tamano].precio;
+  const precioU = producto.precios[tamano]; // ← Aquí toma el precio especial
   const total = precioU;
   carrito.push({
     t: tamano,
@@ -154,7 +199,7 @@ document.querySelectorAll('.tamano-btn').forEach(btn => {
   };
 });
 document.querySelector('.tamano-btn[data-tamano="Chico"]').classList.add('active');
-document.getElementById('img-tamano').src = 'img/peque.jpg';
+document.getElementById('img-tamano').src = 'img/vaso-9oz.jpg';
 
 // --- Render toppings con primero gratis --- 
 function renderToppings() {
