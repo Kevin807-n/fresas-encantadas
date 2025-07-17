@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Fresas con Crema</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+  <header>
+    <div class="header-flex">
+      <img id="logo-empresa" src="img/logo.png" alt="Logo Fresas Encantadas" />
+      <h1>Fresas Encantadas</h1>
+    </div>
+    <nav>
+      <a href="#" onclick="showScreen('landing')">Inicio</a>
+      <a href="#ubicacion" onclick="showScreen('landing')">Ubicación</a>
+      <a href="#" onclick="showScreen('menu')">Menú</a>
+      <a href="#" onclick="showScreen('personaliza')">Personaliza</a>
+      <span id="nav-carrito" onclick="mostrarCarrito()" style="cursor:pointer;position:relative;">
+        <i class="fa fa-shopping-cart icon-cart"></i>
+        <span id="carrito-count" class="cart-badge">0</span>
+      </span>
+    </nav>
+  </header>
+
+  <!-- Landing Page -->
+  <main id="landing" class="screen">
+    <section class="carrusel-section">
+      <div class="carrusel-container">
+        <div class="carrusel-slide active">
+          <img src="img/9.png" alt="Fresas con crema clásica">
+        </div>
+        <div class="carrusel-slide">
+          <img src="img/12.png" alt="Fresas con crema y granola">
+        </div>
+        <div class="carrusel-slide">
+          <img src="img/12.png" alt="Fresas con crema y chocolate">
+        </div>
+        <button class="carrusel-btn prev" aria-label="Anterior"><i class="fa fa-chevron-left"></i></button>
+        <button class="carrusel-btn next" aria-label="Siguiente"><i class="fa fa-chevron-right"></i></button>
+        <div class="carrusel-dots"></div>
+      </div>
+    </section>
+    <section class="order-section">
+      <a href="#" onclick="showScreen('menu')" class="cta-btn grande inicio-btn pulse"><i class="fa fa-list"></i> Menú</a>
+      <a href="#" onclick="showScreen('personaliza')" class="cta-btn grande inicio-btn pulse"><i class="fa fa-pen-nib"></i> Personaliza tu vaso</a>
+    </section>
+    <!-- ... resto igual ... -->
+    <section id="ubicacion" class="info-section">
+      <h2>📍 Nuestra ubicación</h2>
+      <p>Cr 22 #25b - 17 sur, Barrio canaima, Neiva Huila</p>
+      <a href="https://maps.app.goo.gl/bGjyH4vqx1Z9UdQh6" target="_blank" class="map-link">Ver en Google Maps</a>
+    </section>
+    <section id="valoraciones" class="info-section">
+      <h2>⭐ Valoraciones</h2>
+      <div class="estrellas">
+        <span class="estrella checked"></span>
+        <span class="estrella checked"></span>
+        <span class="estrella checked"></span>
+        <span class="estrella checked"></span>
+        <span class="estrella checked"></span>
+      </div>
+      <p><b>4.9/5</b> basado en 120 opiniones</p>
+      <div class="comentarios">
+        <blockquote>
+          <p>“¡Las mejores fresas con crema que he probado, y la atención es excelente!”</p>
+          <footer>- Ana L.</footer>
+        </blockquote>
+        <blockquote>
+          <p>“Las fresas siempre frescas y las salsas deliciosas. ¡Super recomendado!”</p>
+          <footer>- Juan M.</footer>
+        </blockquote>
+      </div>
+    </section>
+    <section id="redes" class="info-section">
+      <h2>📱 Síguenos</h2>
+      <div class="redes-links">
+        <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://wa.me/573142915575" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </section>
+    <section id="info" class="info-section">
+      <h2>ℹ️ Información</h2>
+      <ul>
+        <li><b>Horario:</b> Lunes a Domingo 4:00pm - 9:30pm</li>
+        <li><b>Teléfono:</b> <a href="tel:+573142915575">+57 314 291 5575</a></li>
+        <li><b>Pedidos por WhatsApp:</b> <a href="https://wa.me/573142915575" target="_blank">Haz clic aquí</a></li>
+        <li><b>Email:</b> fresasconcrema@email.com</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Menú (Catálogo de productos prediseñados) -->
+  <main id="menu" class="screen" style="display:none;">
+    <section>
+      <h2>Menú de Fresas con Crema</h2>
+      <div id="catalogo-lista" class="catalogo-lista"></div>
+      <div class="acciones acciones-inferior">
+        <button class="sec-btn" onclick="showScreen('landing')"><i class="fa fa-arrow-left"></i> Volver al inicio</button>
+        <button class="sec-btn" onclick="mostrarCarrito()"><i class="fa fa-shopping-cart"></i> Ver carrito</button>
+        <button class="cta-btn" onclick="showScreen('datos')"><i class="fa fa-check"></i> Terminar pedido</button>
+        <button class="sec-btn" onclick="showScreen('personaliza')"><i class="fa fa-pen-nib"></i> Personaliza tu vaso</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Personalización -->
+  <main id="personaliza" class="screen" style="display:none;">
+    <section id="producto">
+      <h2>Personaliza tu vaso</h2>
+      <div class="tamano-selector">
+        <button class="tamano-btn active" data-tamano="Chico">
+          9 Onzas <br><span>$9.000</span>
+        </button>
+        <button class="tamano-btn" data-tamano="Mediano">
+          12 Onzas <br><span>$12.000</span>
+        </button>
+        <button class="tamano-btn" data-tamano="Grande">
+          16 Onzas <br><span>$16.000</span>
+        </button>
+      </div>
+      <div class="img-preview">
+        <img id="img-tamano" src="img/peque.jpg" alt="Vista previa">
+      </div>
+      <h2>Elige tus toppings <span class="sub">(el primero es gratis)</span></h2>
+      <div class="toppings-list" id="toppings-list"></div>
+      <h2>Elige tus salsas</h2>
+      <div class="salsas-list" id="salsas-list"></div>
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" id="cantidad" min="1" max="10" value="1">
+      <div class="acciones acciones-inferior">
+        <button class="cta-btn" id="agregar-carrito"><i class="fa fa-cart-plus"></i> Agregar al carrito</button>
+        <button class="sec-btn" onclick="mostrarCarrito()"><i class="fa fa-shopping-cart"></i> Ver carrito</button>
+        <button class="cta-btn" id="terminar-pedido" onclick="showScreen('datos')" style="display:none;"><i class="fa fa-check"></i> Terminar pedido</button>
+        <button class="sec-btn" onclick="showScreen('menu')"><i class="fa fa-list"></i> Ir a Menú</button>
+        <button class="sec-btn" onclick="showScreen('landing')"><i class="fa fa-arrow-left"></i> Volver al inicio</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Formulario de datos y resumen -->
+  <main id="datos" class="screen" style="display:none;">
+    <section>
+      <form id="form-datos">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" required>
+        <label for="telefono">Celular:</label>
+        <input type="tel" id="telefono" required pattern="[0-9]{10,}">
+        <label for="tipo-entrega">Tipo de entrega:</label>
+        <select id="tipo-entrega" required>
+          <option value="">Elige una opción</option>
+          <option value="Domicilio">A domicilio</option>
+          <option value="Recoger">Recoger en local</option>
+        </select>
+        <div id="direccion-div" style="display:none;">
+          <label for="direccion">Dirección completa:</label>
+          <input type="text" id="direccion">
+        </div>
+        <label for="fecha">Fecha y hora deseada:</label>
+        <input type="datetime-local" id="fecha" required>
+        <label for="notas">Notas (opcional):</label>
+        <textarea id="notas" placeholder="Notas adicionales para tu pedido"></textarea>
+        <button type="submit" class="cta-btn" style="margin-top:1em;">Revisar y enviar</button>
+        <button type="button" class="sec-btn" onclick="showScreen('menu')">Volver al menú</button>
+      </form>
+    </section>
+    <section>
+      <h2>Resumen de tu pedido</h2>
+      <div id="resumen-pedido"></div>
+    </section>
+  </main>
+
+  <!-- MODAL CARRITO Y ANIMACION FLY-TO-CART (accesible en todas las pantallas) -->
+  <div id="modal-carrito" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarCarrito()">&times;</span>
+      <h2>Carrito</h2>
+      <div id="carrito-list"></div>
+      <div id="carrito-total"></div>
+      <button class="cta-btn" onclick="showScreen('datos')">Terminar pedido</button>
+    </div>
+  </div>
+  <div id="fly-img"></div>
+
+  <footer>
+    <p>&copy; 2025 Fresas con Crema. Todos los derechos reservados.</p>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
