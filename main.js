@@ -61,12 +61,24 @@ const toppings = [
   { nombre: "Maní", precio: 1000 },
   { nombre: "Queso", precio: 1000 },
   { nombre: "Oreo", precio: 1000 },
-  { nombre: "Quipitos", precio: 1000 }
+  { nombre: "Quipitos", precio: 1000 },
+  { nombre: "Nutella", precio: 1000 },
+  { nombre: "Chocomasmelos", precio: 1000 },
+  { nombre: "Barquillos", precio: 1000 },
+  { nombre: "Duraznos", precio: 1000 },
+  { nombre: "Chips Chocolate", precio: 1000 },
+  { nombre: "Chocodisk", precio: 1000 },
+  { nombre: "Brownie", precio: 1000 },
+  { nombre: "Gol", precio: 1000 },
+  { nombre: "Waffers", precio: 1000 },
+  { nombre: "Gomitas", precio: 1000 }
 ];
 const salsas = [
   { nombre: "Salsa de Chocolate", precio: 0 },
   { nombre: "Leche condensada", precio: 0 },
-  { nombre: "Salsa de Fresa", precio: 0 }
+  { nombre: "Salsa de Fresa", precio: 0 },
+  { nombre: "Salsa de Chicle", precio: 0 },
+  { nombre: "Arequipe", precio: 0 }
 ];
 let carrito = [];
 
