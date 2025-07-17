@@ -504,6 +504,6 @@ label { display: block; font-weight: 500; margin-bottom: 0.1em;}
   .topping, .salsa { min-width: 52px; font-size: 0.97em;}
   .catalogo-lista { gap: 0.23em; }
   .producto-catalogo { min-width: 88px; max-width: 115px; }
-  .producto-catalogo img { width: 46px; height: 46px;}
+  .producto-catalogo img { width: 80px; height: 80px;}
   #logo-empresa { width: 90px; height: 90px;}
 }
