@@ -89,9 +89,9 @@ const catalogo = [
     descripcion: "Fresas con crema, oreo, chocomasmelos, brownie, quipito y salsas al gusto",
     img: "img/vaso-encantado.jpg",
     precios: {
-      "Chico": 12000,   
-      "Mediano": 15000,
-      "Grande": 19000
+      "9 oz": 12000,   
+      "12 oz": 15000,
+      "16 oz": 19000
     }
   },
   {
@@ -99,9 +99,9 @@ const catalogo = [
     descripcion: "Fresas con crema, chocolatina, chocorramo, trocitos de gol, chips de chocolate y nutella.",
     img: "img/vaso-chocosabor.jpg",
     precios: {
-      "Chico": 12000,   
-      "Mediano": 15000,
-      "Grande": 19000
+      "9 oz": 12000,   
+      "12 oz": 15000,
+      "16 oz": 19000
     }
   },
   {
@@ -109,9 +109,9 @@ const catalogo = [
     descripcion: "Fresas con crema, duraznos, manzana, kiwi, queso, y cereza.",
     img: "img/vaso-enfrutado.jpg",
     precios: {
-      "Chico": 12000,   
-      "Mediano": 15000,
-      "Grande": 19000
+      "9 oz": 12000,   
+      "12 oz": 15000,
+      "16 oz": 19000
     }
   },
   {
@@ -119,9 +119,9 @@ const catalogo = [
     descripcion: "Fresas con crema, variedad de gomitas, chocolores y masmelos.",
     img: "img/vaso-trululu.jpg",
     precios: {
-      "Chico": 12000,   
-      "Mediano": 15000,
-      "Grande": 19000
+      "9 oz": 12000,   
+      "12 oz": 15000,
+      "16 oz": 19000
     }
   },
   {
@@ -129,9 +129,9 @@ const catalogo = [
     descripcion: "Fresas con crema, trocitos de bocadillo, achiras, queso y arequipe.",
     img: "img/vaso-opita.jpg",
     precios: {
-      "Chico": 12000,   
-      "Mediano": 15000,
-      "Grande": 19000
+      "9 oz": 12000,   
+      "12 oz": 15000,
+      "16 oz": 19000
     }
   },
   {
@@ -139,9 +139,17 @@ const catalogo = [
     descripcion: "Fresas con crema, quipitos, merengue, masmelos y chips de chocolate.",
     img: "img/vaso-nevado.jpg",
     precios: {
-      "Chico": 12000,   
-      "Mediano": 15000,
-      "Grande": 19000
+      "9 oz": 12000,   
+      "12 oz": 15000,
+      "16 oz": 19000
+    }
+  },
+  {
+    nombre: "Merengon",
+    descripcion: "Capas crocantes de merengue, nuestra crema artesanal, capas de frutas (Guanabana, durazno, kiwi, fresa) y rodeado de fresa de chocolate.",
+    img: "img/merengon.jpg",
+    precios: {  
+      "16 oz": 12000,
     }
   }
 ];
@@ -159,9 +167,13 @@ function renderCatalogo() {
       <h3>${producto.nombre}</h3>
       <p>${producto.descripcion}</p>
       <div class="tamano-catalogo-btns">
-        <button onclick="agregarCatalogoAlCarrito(${prodIdx}, 'Chico')">9 oz<br><span>${formatoCOP(producto.precios['Chico'])}</span></button>
-        <button onclick="agregarCatalogoAlCarrito(${prodIdx}, 'Mediano')">12 oz<br><span>${formatoCOP(producto.precios['Mediano'])}</span></button>
-        <button onclick="agregarCatalogoAlCarrito(${prodIdx}, 'Grande')">16 oz<br><span>${formatoCOP(producto.precios['Grande'])}</span></button>
+        ${
+          Object.entries(producto.precios).map(([tamano, precio]) => `
+            <button onclick="agregarCatalogoAlCarrito(${prodIdx}, '${tamano}')">
+              ${tamano}<br><span>${formatoCOP(precio)}</span>
+            </button>
+          `).join('')
+        }
       </div>
     `;
     lista.appendChild(div);
@@ -505,6 +517,15 @@ document.getElementById('form-datos').onsubmit = function(e) {
   carrito = [];
   actualizarContadorCarrito();
   setTimeout(()=>{ showScreen('landing'); }, 1000);
+};
+
+window.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('promo-popup').style.display = 'flex';
+});
+
+// Cerrar el popup con la X
+document.getElementById('close-promo').onclick = function() {
+  document.getElementById('promo-popup').style.display = 'none';
 };
 
 // Inicialización

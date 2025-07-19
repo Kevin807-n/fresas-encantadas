@@ -495,6 +495,37 @@ label { display: block; font-weight: 500; margin-bottom: 0.1em;}
   margin-top: 0.04em;
 }
 
+/* Popup promocional */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 15px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  max-width: 90vw;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px; right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #444;
+}
+
 @media (max-width: 600px) {
   .carrusel-section, .info-section, #menu, #datos, #personaliza { max-width: 100vw; }
   .cta-btn.grande, .cta-btn.inicio-btn { font-size: 0.93em; padding: 0.6em 1em;}
